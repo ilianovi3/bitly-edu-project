@@ -1,0 +1,45 @@
+[project]
+name = "bitly"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "aiosqlite>=0.22.1",
+    "apscheduler>=3.11.2",
+    "asyncpg>=0.31.0",
+    "fastapi>=0.135.1",
+    "greenlet>=3.3.2",
+    "pydantic-settings>=2.13.1",
+    "sqlalchemy>=2.0.48",
+    "structlog>=25.5.0",
+    "uvicorn>=0.42.0",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.1",
+    "httpx>=0.28.1",
+    "pytest>=8.2,<9",
+    "pytest-asyncio==0.24.0",
+    "pytest-dotenv>=0.5.2",
+]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+
+# Не падать на библиотеках без type hints
+ignore_missing_imports = true
+
+# Решает проблему с отсутствием app/__init__.py
+explicit_package_bases = true
+
+# Показывать коды ошибок (удобно для ignore-комментариев)
+show_error_codes = true
+
+# Исключить директории
+exclude = [
+    "migrations/",
+    "alembic/",
+    "tests/",  # если не хочешь типизировать тесты
+]
